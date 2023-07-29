@@ -110,7 +110,7 @@ const Post = ({ data: { post } }) => (
       <span>{post.date}</span>
       {post.tags && (
         <React.Fragment>
-          {` — `}
+          {'{{ — }}'}
           <ItemTags tags={post.tags} />
         </React.Fragment>
       )}
