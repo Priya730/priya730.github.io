@@ -47,12 +47,16 @@ const config: GatsbyConfig = {
         ],
         externalLinks: [
           {
+            name: `GitHub`,
+            url: `https://github.com/Priya730`,
+          },
+          {
             name: `Twitter`,
             url: `https://twitter.com/shivikapriya`,
           },
           {
-            name: `Homepage`,
-            url: `https://www.priya730.github.io`,
+            name: `LinkedIn`,
+            url: `https://linkedin.com/priyasrivastava730`,
           },
         ],
       },
