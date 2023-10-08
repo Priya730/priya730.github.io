@@ -1,5 +1,5 @@
 # Welcome to my digital garden 🌱
-[![pages-build-deployment](https://github.com/Priya730/priya730.github.io/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/Priya730/priya730.github.io/actions/workflows/pages/pages-build-deployment)
+[![deployment](https://github.com/Priya730/priya730.github.io/actions/workflows/pages/pages-build-deployment/badge.svg?branch=gh-pages)](https://github.com/Priya730/priya730.github.io/actions/workflows/pages/pages-build-deployment)
 
 I'm a software developer, and by day, I'm deep in the world of tech innovation at [HackerRank](https://www.hackerrank.com). In this cozy corner of the internet, you can expect to join me on a [journey of coding adventures](https://priya730.github.io/achievements). From my [latest projects](https://priya730.github.io/projects) to [discoveries](https://priya730.github.io/blog) in the ever-evolving tech landscape, I'm here to share it all. Plus, we'll dive into design, explore new technologies, and maybe even learn a few development tricks together. 
 
