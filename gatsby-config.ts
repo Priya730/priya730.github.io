@@ -25,10 +25,6 @@ const config: GatsbyConfig = {
       options: {
         navigation: [
           {
-            title: `Blog`,
-            slug: `/blog`,
-          },
-          {
             title: `About`,
             slug: `/about`,
           },
@@ -46,6 +42,10 @@ const config: GatsbyConfig = {
           },
         ],
         externalLinks: [
+          {
+            name: `Blog 🌱`,
+            url: `https://priyasrivastava.hashnode.dev`,
+          },
           {
             name: `GitHub`,
             url: `https://github.com/Priya730`,

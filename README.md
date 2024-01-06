@@ -1,7 +1,7 @@
 # Welcome to my digital garden 🌱
 [![deployment](https://github.com/Priya730/priya730.github.io/actions/workflows/pages/pages-build-deployment/badge.svg?branch=gh-pages)](https://github.com/Priya730/priya730.github.io/actions/workflows/pages/pages-build-deployment)
 
-I'm a software developer, and by day, I'm deep in the world of tech innovation at [HackerRank](https://www.hackerrank.com). In this cozy corner of the internet, you can expect to join me on a [journey of coding adventures](https://priya730.github.io/achievements). From my [latest projects](https://priya730.github.io/projects) to [discoveries](https://priya730.github.io/blog) in the ever-evolving tech landscape, I'm here to share it all. Plus, we'll dive into design, explore new technologies, and maybe even learn a few development tricks together. 
+I'm a software developer, and by day, I'm deep in the world of tech innovation at [HackerRank](https://www.hackerrank.com). In this cozy corner of the internet, you can expect to join me on a [journey of coding adventures](https://priya730.github.io/achievements). From my [latest projects](https://priya730.github.io/projects) to [discoveries](https://priyasrivastava.hashnode.dev) in the ever-evolving tech landscape, I'm here to share it all. Plus, we'll dive into design, explore new technologies, and maybe even learn a few development tricks together. 
 
 This isn't just another website; it's my place 🏡 , and I'm thrilled to have you here. So go ahead, click around, and let's embark on this journey together. Welcome to my world of coding, building, and exploring tech! 🚀
 
