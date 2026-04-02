@@ -184,10 +184,10 @@ const FooterSection = () => (
       <div className="flex flex-col items-end max-md:items-start gap-7">
         <div className="flex flex-col items-end max-md:items-start gap-2.5">
           {[
-            { label: "GitHub", href: "https://github.com" },
-            { label: "LinkedIn", href: "https://linkedin.com" },
-            { label: "Twitter / X", href: "https://twitter.com" },
-            { label: "Hashnode", href: "https://hashnode.com" },
+            { label: "GitHub", href: "https://github.com/Priya730" },
+            { label: "LinkedIn", href: "https://linkedin.com/in/priyasrivastava730" },
+            { label: "Twitter / X", href: "https://twitter.com/shivikapriya" },
+            { label: "Hashnode", href: "https://priyasrivastava.hashnode.dev/" },
           ].map((s) => (
             <a
               key={s.label}
