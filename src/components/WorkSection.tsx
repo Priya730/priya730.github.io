@@ -98,44 +98,44 @@ const workItems = [
   {
     id: "ide-migration",
     meta: "HackerRank · 2022–23 ·  Skills Infra Team · Intern",
-title: "Theia to VS Code Migration for Assessments",
-insight: "Enabled 100% traffic migration to VS Code and added observability across 50+ stacks",
-tags: ["Candidate DX ↑", "Docker", "Platform Infra", "Oncall", "Observability"],
-greenTag: "100% traffic → VS Code · ~68K attempts/month",
-cols: [
-  { 
-    label: "The problem", 
-    content: <>
-      <li>Candidates used Theia IDE for frontend, backend, and full-stack assessments.</li>
-      <li><strong className="font-medium text-foreground">Theia struggled to match the experience of VS Code.</strong></li>
-      <li>Debugging issues during interviews was difficult due to limited observability.</li>
-    </> 
-  },
-  {
-    label: "What I worked on", 
-    content: <>
-      <strong className="font-medium text-foreground">Supported the migration from Theia to VS Code at the infra layer.</strong>
+    title: "Theia to VS Code Migration for Assessments",
+    insight: "Enabled 100% traffic migration to VS Code and added observability across 50+ stacks",
+    tags: ["Candidate DX ↑", "Docker", "Platform Infra", "Oncall", "Observability"],
+    greenTag: "100% traffic → VS Code · ~68K attempts/month",
+    cols: [
+      {
+        label: "The problem",
+        content: <>
+          <li>Candidates used Theia IDE for frontend, backend, and full-stack assessments.</li>
+          <li><strong className="font-medium text-foreground">Theia struggled to match the experience of VS Code.</strong></li>
+          <li>Debugging issues during interviews was difficult due to limited observability.</li>
+        </>
+      },
+      {
+        label: "What I worked on",
+        content: <>
+          <strong className="font-medium text-foreground">Supported the migration from Theia to VS Code at the infra layer.</strong>
 
-      <ul>Worked on:</ul>
+          <ul>Worked on:</ul>
 
-      <li>building and maintaining Docker-based execution environments</li>
-      <li>ensuring consistency across <strong className="font-medium text-foreground">50+ stacks</strong></li>
-      <li>integrating New Relic into base images for observability</li>
-      <li>migrating from Logz to <strong className="font-medium text-foreground">New Relic</strong> for unified monitoring</li>
-      <li>creating dashboards to support oncall debugging</li>
-      <li>serving as oncall engineer during rollout</li>
-    </>
-  },
-  { 
-    label: "What changed", 
-    content: <>
-      <li><strong className="font-medium text-foreground">100% of traffic</strong> moved to VS Code (~68K attempts/month).</li>
-      <li>Candidates got a <strong className="font-medium text-foreground">familiar, feature-rich IDE</strong>.</li>
-      <li>Granular monitoring made issues easier to detect and debug.</li>
-      <li>Support improved with a <strong className="font-medium text-foreground">single observability platform</strong>.</li>
-    </> 
-  },
-],
+          <li>building and maintaining Docker-based execution environments</li>
+          <li>ensuring consistency across <strong className="font-medium text-foreground">50+ stacks</strong></li>
+          <li>integrating New Relic into base images for observability</li>
+          <li>migrating from Logz to <strong className="font-medium text-foreground">New Relic</strong> for unified monitoring</li>
+          <li>creating dashboards to support oncall debugging</li>
+          <li>serving as oncall engineer during rollout</li>
+        </>
+      },
+      {
+        label: "What changed",
+        content: <>
+          <li><strong className="font-medium text-foreground">100% of traffic</strong> moved to VS Code (~68K attempts/month).</li>
+          <li>Candidates got a <strong className="font-medium text-foreground">familiar, feature-rich IDE</strong>.</li>
+          <li>Granular monitoring made issues easier to detect and debug.</li>
+          <li>Support improved with a <strong className="font-medium text-foreground">single observability platform</strong>.</li>
+        </>
+      },
+    ],
     visual: {
       type: "diagram",
       content: <MigrationDiagram />
@@ -246,7 +246,16 @@ const CaseCard = ({ item, index }: { item: typeof workItems[0]; index: number })
               </a>
             ) : (
               <div className="p-4">
-                {item.visual.content}
+                <div
+                  className="
+      transition-all duration-300
+      hover:scale-[1.03]
+      hover:shadow-lg
+      cursor-zoom-in
+    "
+                >
+                  {item.visual.content}
+                </div>
               </div>
             )}
 
