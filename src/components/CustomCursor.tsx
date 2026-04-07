@@ -1,11 +1,22 @@
 import { useEffect, useRef, useState } from "react";
 
+const isTouchDevice = () =>
+  typeof window !== "undefined" &&
+  ("ontouchstart" in window || navigator.maxTouchPoints > 0);
+
 const CustomCursor = () => {
   const cursorRef = useRef<HTMLDivElement>(null);
   const [isHovering, setIsHovering] = useState(false);
   const [cursorLabel, setCursorLabel] = useState<string | null>(null);
+  const [isTouch, setIsTouch] = useState(false);
 
   useEffect(() => {
+    if (isTouchDevice()) {
+      setIsTouch(true);
+      document.body.style.cursor = "auto";
+      return;
+    }
+
     const cursor = cursorRef.current;
     if (!cursor) return;
 
@@ -16,11 +27,11 @@ const CustomCursor = () => {
 
     const handleOver = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
-      // "Try it out" label on external links
       const linkEl = target.closest("a[href^='http'], a[target='_blank'], [data-cursor-label]");
       if (linkEl) {
-        const label = linkEl.getAttribute("data-cursor-label") || "Try it out ↗";
-        setCursorLabel(label);
+const label =
+  linkEl.getAttribute("data-cursor-label") ||
+  (target.closest("[data-expand]") ? "See how it works" : "Open ↗");        setCursorLabel(label);
         setIsHovering(true);
         return;
       }
@@ -48,6 +59,8 @@ const CustomCursor = () => {
     };
   }, []);
 
+  if (isTouch) return null;
+
   return (
     <div
       ref={cursorRef}
@@ -57,7 +70,6 @@ const CustomCursor = () => {
     >
       {cursorLabel && (
         <span
-          className="cursor-label"
           style={{
             position: "absolute",
             top: "50%",
@@ -68,10 +80,11 @@ const CustomCursor = () => {
             fontWeight: 500,
             padding: "4px 10px",
             borderRadius: "6px",
-            background: "hsl(var(--foreground))",
+    background: "hsl(var(--foreground))", // solid color
+    opacity: 1, // 👈 force full opacity
+    mixBlendMode: "normal", // 👈 important
             color: "hsl(var(--background))",
             pointerEvents: "none",
-            mixBlendMode: "normal",
           }}
         >
           {cursorLabel}

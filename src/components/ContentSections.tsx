@@ -12,11 +12,11 @@ const SectionHead = ({ title, subtitle }: { title: string; subtitle: string }) =
         transition={{ duration: 0.6 }}
         style={{
           fontFamily: "var(--font-display)",
-          fontSize: "clamp(38px, 6vw, 68px)",
+          fontSize: "clamp(34px, 5vw, 58px)",
           fontWeight: 700,
           letterSpacing: "-0.025em",
         }}
-        className="mb-2.5"
+        className="mb-2"
       >
         {title}
       </motion.h2>
@@ -33,25 +33,103 @@ const SectionHead = ({ title, subtitle }: { title: string; subtitle: string }) =
   );
 };
 
-const projects = [
-  { icon: "👩‍⚕️", title: "HealthiHer", desc: "A women-centric health platform providing awareness, wellness resources, and a meditation app.", lang: "CSS · JS", link: "https://github.com/priya-srivastava" },
-  { icon: "🔐", title: "unipass", desc: "Node.js CLI password generator. Create strong, unique passwords right from your terminal.", lang: "JavaScript", link: "https://github.com/priya-srivastava" },
-  { icon: "🎙️", title: "COVID Voice Assistant", desc: "Python voice assistant answering COVID-19 case count questions in real time.", lang: "Python", link: "https://github.com/priya-srivastava" },
-];
+/* ═══ GSoC Section ═══ */
+const GSoCSection = () => {
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true, margin: "-60px" });
+  return (
+    <section id="gsoc" className="pb-[120px]">
+      <div className="w-full max-w-[1100px] mx-auto px-12 max-md:px-6">
+        <SectionHead title="Open Source" subtitle="Where it started" />
+        <motion.div
+          ref={ref}
+          initial={{ opacity: 0, y: 20 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6 }}
+          className="rounded-[16px] border border-border p-10 max-md:p-7 grid grid-cols-[1fr_1fr] max-md:grid-cols-1 gap-10"
+          style={{ background: "hsl(var(--card))" }}
+        >
+          <div>
+            <div className="flex items-center gap-2 mb-4">
+              <span className="w-[18px] h-px" style={{ background: "hsl(var(--text-dim))" }} />
+              <span className="text-[10px] uppercase tracking-[0.12em] text-muted-foreground">
+                Google Summer of Code · CHAOSS · 2022
+              </span>
+            </div>
+            <h3
+              className="mb-4"
+              style={{
+                fontFamily: "var(--font-display)",
+                fontSize: "clamp(22px, 3vw, 32px)",
+                fontWeight: 700,
+                letterSpacing: "-0.02em",
+                lineHeight: 1.15,
+              }}
+            >
+              From first PR to shipping production metrics
+            </h3>
+            <p className="text-[14.5px] font-light text-muted-foreground leading-[1.8] mb-4">
+              Selected for GSoC 2022 with CHAOSS — an open-source project under the Linux Foundation
+              focused on community health analytics. Contributed to Augur, building metrics pipelines
+              that help maintainers understand the sustainability and health of their communities.
+            </p>
+            <div className="flex flex-wrap gap-1.5">
+              {["Python", "Data Pipelines", "Open Source", "GSoC", "Linux Foundation"].map((tag) => (
+                <span
+                  key={tag}
+                  className="text-[10px] px-[9px] py-[3px] border border-border rounded-full text-muted-foreground uppercase tracking-[0.05em]"
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
+          </div>
+          <div className="flex flex-col justify-center gap-5">
+            <div className="border-l border-border pl-5">
+              <div className="text-[9.5px] uppercase tracking-[0.12em] text-muted-foreground mb-2">The shift</div>
+              <p className="text-[15px] font-light leading-[1.7]" style={{ color: "hsl(var(--foreground) / 0.7)" }}>
+                GSoC taught me the difference between writing code and understanding systems.
+                It was the first time I worked on something where the users were other developers —
+                and the quality of my thinking mattered more than the volume of my output.
+              </p>
+            </div>
+            <div className="border-l border-border pl-5">
+              <div className="text-[9.5px] uppercase tracking-[0.12em] text-muted-foreground mb-2">The outcome</div>
+              <p className="text-[15px] font-light leading-[1.7]" style={{ color: "hsl(var(--foreground) / 0.7)" }}>
+                Contributed to community health metrics used by open-source maintainers worldwide.
+                Spoke at CHAOSS community calls. Started thinking about software as craft.
+              </p>
+            </div>
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  );
+};
 
-const writings = [
-  { cat: "Engineering · LLMs", title: "How I built an AI question generator before it was cool", excerpt: "The architecture decisions, the failures, and what I'd do differently building an LLM pipeline in 2023." },
-  { cat: "Product", title: "What being a product-minded engineer actually means", excerpt: "It's not about Figma or sitting in PM meetings. It's about asking \"should this exist?\" before \"how do I build it?\"" },
-  { cat: "Open Source", title: "My GSoC journey: from first PR to shipping production code", excerpt: "What the summer of code actually taught me about software, community, and learning in public." },
-];
-
-const year=new Date().getFullYear()
-
-const talks = [
-  { title: "Building AI-Powered Assessment Tools at Scale", event: "Engineering Deep Dive · HackerRank Internal", yr: "2023" },
-  { title: "Open Source Health Metrics with Augur", event: "CHAOSS Community Call · GSoC Demo Day", yr: "2022" },
-  { title: "Contributing to Open Source: From Zero to GSoC", event: "GirlScript Summer of Code · Community Session", yr: "2021" },
-  { title: "More coming soon —", event: "Got a meetup, podcast, or conf? Let's talk.", yr: year, dim: true },
+/* ═══ Now Section ═══ */
+const nowCards = [
+  {
+    label: "Currently thinking about",
+    title: "What does \"senior\" mean when AI can write the code?",
+    body: "The engineers who matter next decade won't be judged by velocity. They'll be judged by judgment — knowing what to build, what to skip, and what to question.",
+  },
+  {
+    label: "Currently reading",
+    title: "The Hard Thing About Hard Things",
+    body: "I read about startups the way other people watch sports. I want to understand the decisions behind the products. Also rereading Harry Potter. Some things are constants.",
+  },
+  {
+    label: "Currently building",
+    title: "This site — and the essays to fill it",
+    body: "The site is the smallest part. The harder work is writing clearly about what I've learned — in public, with my name on it.",
+  },
+  {
+    label: "Talks",
+    title: "Open to speaking",
+    body: "I've spoken at CHAOSS and GirlScript. Open to meetups, podcasts, and conferences — around product engineering, LLMs in production, and what open source teaches you about craft.",
+    link: { label: "Invite me ↗", href: "mailto:shivikapriya730@gmail.com" },
+  },
 ];
 
 const BuildingSection = () => {
@@ -60,29 +138,38 @@ const BuildingSection = () => {
   return (
     <section id="building" className="pb-[120px]">
       <div className="w-full max-w-[1100px] mx-auto px-12 max-md:px-6">
-        <SectionHead title="Building" subtitle="Things I make on the side" />
-        <div ref={ref} className="grid grid-cols-3 max-md:grid-cols-1 gap-3.5">
-          {projects.map((p, i) => (
-            <motion.a
-              key={p.title}
-              href={p.link}
-              target="_blank"
-              rel="noopener noreferrer"
+        <SectionHead title="Now" subtitle="What I'm thinking about, reading, and working on" />
+        <div ref={ref} className="grid grid-cols-2 max-md:grid-cols-1 gap-3.5">
+          {nowCards.map((c, i) => (
+            <motion.div
+              key={c.title}
               initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="rounded-xl border border-border p-[26px] flex flex-col gap-2.5 no-underline hover:border-[hsl(var(--border-hover))] transition-colors cursor-none"
+              transition={{ duration: 0.5, delay: i * 0.08 }}
+              className="rounded-[14px] border border-border p-7 hover:border-[hsl(var(--border-hover))] hover:bg-[hsl(var(--card-hover))] transition-colors"
               style={{ background: "hsl(var(--card))" }}
-              data-hover
             >
-              <span className="text-lg">{p.icon}</span>
-              <span style={{ fontFamily: "var(--font-display)", fontSize: "18px", fontWeight: 600, letterSpacing: "-0.01em" }}>{p.title}</span>
-              <span className="text-[13.5px] font-light text-muted-foreground leading-[1.72] flex-1">{p.desc}</span>
-              <div className="flex justify-between items-center mt-1.5 text-[11.5px]">
-                <span style={{ color: "hsl(var(--text-dim))" }}>{p.lang}</span>
-                <span className="text-muted-foreground hover:text-foreground transition-colors">GitHub ↗</span>
+              <div className="text-[9.5px] uppercase tracking-[0.12em] text-muted-foreground mb-3">
+                {c.label}
               </div>
-            </motion.a>
+              <div
+                className="mb-2"
+                style={{ fontFamily: "var(--font-display)", fontSize: "19px", fontWeight: 600, lineHeight: 1.25 }}
+              >
+                {c.title}
+              </div>
+              <p className="text-[13.5px] font-light text-muted-foreground leading-[1.75]">
+                {c.body}
+              </p>
+              {c.link && (
+                <a
+                  href={c.link.href}
+                  className="inline-block mt-3 text-[13px] text-muted-foreground no-underline border-b border-border pb-[2px] hover:text-foreground hover:border-foreground transition-colors cursor-none"
+                >
+                  {c.link.label}
+                </a>
+              )}
+            </motion.div>
           ))}
         </div>
       </div>
@@ -90,40 +177,74 @@ const BuildingSection = () => {
   );
 };
 
+/* ═══ Writing ═══ */
+const writings = [
+  { cat: "Engineering · LLMs", title: "Why I made the AI audit itself", blurb: "LLM output quality is not a model problem. It's a systems problem." },
+  { cat: "Product Engineering", title: "The IDE is not infrastructure. It's a product.", blurb: "When you move the tool engineers use during job interviews, every crash is a failed hire." },
+  { cat: "Open Source · Career", title: "I started coding as a hobby. GSoC taught me to think like an engineer.", blurb: "The shift from writing code to understanding systems." },
+  { cat: "The Future of Engineering", title: "AI can write the code. The question is who decides what to write.", blurb: "Why problem clarity is the skill that compounds." },
+];
+
 const WritingSection = () => {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-60px" });
   return (
     <section id="writing" className="pb-[120px]">
       <div className="w-full max-w-[1100px] mx-auto px-12 max-md:px-6">
-        <SectionHead title="Writing" subtitle="Thinking out loud" />
-        <div ref={ref} className="grid grid-cols-3 max-md:grid-cols-1 gap-3.5 mb-7">
+        <SectionHead title="Writing" subtitle="Ideas I've been turning over" />
+        <div ref={ref} className="flex flex-col">
           {writings.map((w, i) => (
             <motion.a
               key={w.title}
               href="#"
-              initial={{ opacity: 0, y: 20 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="rounded-xl border border-border p-[26px] no-underline flex flex-col gap-2.5 hover:border-[hsl(var(--border-hover))] transition-colors cursor-none"
-              style={{ background: "hsl(var(--card))" }}
-              data-hover
+              initial={{ opacity: 0 }}
+              animate={inView ? { opacity: 1 } : {}}
+              transition={{ duration: 0.5, delay: i * 0.08 }}
+              className="py-6 border-b border-border first:border-t grid grid-cols-[1fr_auto] gap-7 items-center no-underline group cursor-none"
             >
-              <span className="text-[10.5px] uppercase tracking-[0.08em] text-muted-foreground">{w.cat}</span>
-              <span style={{ fontFamily: "var(--font-display)", fontSize: "18px", fontWeight: 500, lineHeight: 1.3 }} className="flex-1">{w.title}</span>
-              <span className="text-[13.5px] font-light text-muted-foreground leading-[1.7]">{w.excerpt}</span>
+              <div>
+                <div className="text-[10px] uppercase tracking-[0.1em] text-muted-foreground mb-1.5">{w.cat}</div>
+                <div
+                  className="group-hover:opacity-60 transition-opacity"
+                  style={{ fontFamily: "var(--font-display)", fontSize: "clamp(17px, 2vw, 23px)", fontWeight: 500, lineHeight: 1.25 }}
+                >
+                  {w.title}
+                </div>
+                <div className="text-[13px] font-light text-muted-foreground leading-[1.7] mt-1.5 max-w-[520px]">
+                  {w.blurb}
+                </div>
+              </div>
+              <svg
+                className="transition-transform duration-300 group-hover:translate-x-[3px] group-hover:-translate-y-[3px] shrink-0"
+                width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"
+                style={{ color: "hsl(var(--text-dim))" }}
+              >
+                <path d="M7 17L17 7M17 7H7M17 7v10" />
+              </svg>
             </motion.a>
           ))}
         </div>
-        <div className="text-center mt-2">
-          <a href="https://hashnode.com" target="_blank" rel="noopener noreferrer" className="text-[13.5px] text-muted-foreground no-underline border-b border-border pb-[2px] hover:text-foreground hover:border-foreground transition-colors cursor-none">
-            Read all writing on Hashnode ↗
+        <div className="text-center mt-7">
+          <a
+            href="https://hashnode.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-[13px] text-muted-foreground no-underline border-b border-border pb-[2px] hover:text-foreground hover:border-foreground transition-colors cursor-none"
+          >
+            All writing on Hashnode ↗
           </a>
         </div>
       </div>
     </section>
   );
 };
+
+/* ═══ Talks ═══ */
+const talks = [
+  { title: "Building AI-Powered Assessment Tools at Scale", event: "Engineering Deep Dive · HackerRank Internal", yr: "2023" },
+  { title: "Open Source Health Metrics with Augur", event: "CHAOSS Community Call · GSoC Demo Day", yr: "2022" },
+  { title: "Contributing to Open Source: From Zero to GSoC", event: "GirlScript Summer of Code · Community Session", yr: "2021" },
+];
 
 const TalksSection = () => {
   const ref = useRef(null);
@@ -137,9 +258,9 @@ const TalksSection = () => {
             <motion.div
               key={t.title}
               initial={{ opacity: 0 }}
-              animate={inView ? { opacity: t.dim ? 0.35 : 1 } : {}}
+              animate={inView ? { opacity: 1 } : {}}
               transition={{ duration: 0.5, delay: i * 0.08 }}
-              className={`px-8 py-[26px] grid grid-cols-[1fr_auto] items-center gap-6 border-b border-border last:border-b-0 hover:bg-[hsl(var(--card-hover))] transition-colors`}
+              className="px-8 py-[26px] grid grid-cols-[1fr_auto] items-center gap-6 border-b border-border last:border-b-0 hover:bg-[hsl(var(--card-hover))] transition-colors"
               style={{ background: "hsl(var(--card))" }}
             >
               <div>
@@ -155,6 +276,7 @@ const TalksSection = () => {
   );
 };
 
+/* ═══ Footer ═══ */
 const FooterSection = () => (
   <footer className="border-t border-border py-24">
     <div className="w-full max-w-[1100px] mx-auto px-12 max-md:px-6 grid grid-cols-2 max-md:grid-cols-1 gap-12 items-end">
@@ -163,16 +285,16 @@ const FooterSection = () => (
           className="mb-[18px]"
           style={{
             fontFamily: "var(--font-display)",
-            fontSize: "clamp(36px, 5vw, 62px)",
+            fontSize: "clamp(32px, 4.5vw, 56px)",
             fontWeight: 700,
             letterSpacing: "-0.025em",
             lineHeight: 1.05,
           }}
         >
-          Let's build<br />something<br />together.
+          Let's close<br />a gap together.
         </h2>
-        <p className="text-[14.5px] font-light text-muted-foreground max-w-[380px] leading-[1.8]">
-          I'm open to interesting problems, collaborations, and conversations. Especially about AI, product, and systems that have to scale.
+        <p className="text-[14px] font-light text-muted-foreground max-w-[360px] leading-[1.8]">
+          Open to interesting problems, collaborations, and honest conversations. Especially about AI, product engineering, and systems that have to scale.
         </p>
         <a
           href="mailto:shivikapriya730@gmail.com"
@@ -184,26 +306,26 @@ const FooterSection = () => (
       <div className="flex flex-col items-end max-md:items-start gap-7">
         <div className="flex flex-col items-end max-md:items-start gap-2.5">
           {[
-            { label: "GitHub", href: "https://github.com/Priya730" },
-            { label: "LinkedIn", href: "https://linkedin.com/in/priyasrivastava730" },
-            { label: "Twitter / X", href: "https://twitter.com/shivikapriya" },
-            { label: "Hashnode", href: "https://priyasrivastava.hashnode.dev/" },
+            { label: "GitHub", href: "https://github.com" },
+            { label: "LinkedIn", href: "https://linkedin.com" },
+            { label: "Twitter / X", href: "https://twitter.com" },
+            { label: "Hashnode", href: "https://hashnode.com" },
           ].map((s) => (
             <a
               key={s.label}
               href={s.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[13.5px] text-muted-foreground no-underline hover:text-foreground transition-colors flex items-center gap-1.5 cursor-none"
+              className="text-[13.5px] text-muted-foreground no-underline hover:text-foreground transition-colors cursor-none"
             >
               {s.label} ↗
             </a>
           ))}
         </div>
-        <span className="text-[12px]" style={{ color: "hsl(var(--text-dim))" }}>© {new Date().getFullYear()} Priya Srivastava</span>
+        <span className="text-[12px]" style={{ color: "hsl(var(--text-dim))" }}>© 2025 Priya Srivastava</span>
       </div>
     </div>
   </footer>
 );
 
-export { BuildingSection, WritingSection, TalksSection, FooterSection };
+export { GSoCSection, BuildingSection, WritingSection, TalksSection, FooterSection };

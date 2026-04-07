@@ -32,7 +32,7 @@ const Navbar = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ["hero", "about", "work", "building", "writing", "talks"];
+      const sections = ["hero", "about", "work", "gsoc", "building", "writing", "talks"];
       for (const id of sections) {
         const el = document.getElementById(id);
         if (el) {
@@ -52,7 +52,7 @@ const Navbar = () => {
     { id: "index", href: "#hero", label: "Index" },
     { id: "work", href: "#work", label: "Work" },
     { id: "writing", href: "#writing", label: "Writing" },
-    { id: "talks", href: "#talks", label: "Talks" },
+    { id: "building", href: "#building", label: "Now" },
   ];
 
   return (

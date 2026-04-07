@@ -81,8 +81,10 @@
   z-index: 9999;
   transform: translate(-50%, -50%);
   transition: width 0.18s var(--ease), height 0.18s var(--ease), opacity 0.2s;
-  mix-blend-mode: difference;
-  will-change: transform;
+box-shadow: 0 0 12px rgba(0, 0, 0, 0.25);
+  mix-blend-mode: normal; /* 👈 key change */
+  opacity: 1;             /* 👈 ensure fully visible */
+  will-change: transform, width, height;
 }
 #custom-cursor.big {
   width: 36px;
@@ -146,6 +148,23 @@
   z-index: 9997;
   font-size: 20px;
   animation: emoji-float 1.2s var(--ease) forwards;
+}
+
+/* Ticker */
+@keyframes tick {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.ticker-track {
+  display: flex;
+  width: max-content;
+  animation: tick 34s linear infinite;
+}
+
+/* Touch device override */
+@media (pointer: coarse) {
+  body { cursor: auto !important; }
+  * { cursor: auto !important; }
 }
 
 /* Hand-drawn underline SVG animation */
