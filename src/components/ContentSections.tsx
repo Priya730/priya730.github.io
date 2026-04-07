@@ -1,5 +1,8 @@
 import { useRef } from "react";
+import { Link } from "react-router-dom";
 import { motion, useInView } from "framer-motion";
+import { getAllPosts } from "@/lib/blog";
+
 
 const SectionHead = ({ title, subtitle }: { title: string; subtitle: string }) => {
   const ref = useRef(null);
@@ -69,7 +72,7 @@ const GSoCSection = () => {
               From first PR to shipping production metrics
             </h3>
             <p className="text-[15.5px] font-light text-muted-foreground leading-[1.8] mb-4">
-              Selected for GSoC 2022 with CHAOSS — an open-source project under the Linux Foundation
+              Selected for GSoC 2022 with CHAOSS  an open-source project under the Linux Foundation
               focused on community health analytics. Contributed to Augur, building metrics pipelines
               that help maintainers understand the sustainability and health of their communities.
             </p>
@@ -89,7 +92,7 @@ const GSoCSection = () => {
               <div className="text-[9.5px] uppercase tracking-[0.12em] text-muted-foreground mb-2">The shift</div>
               <p className="text-[15px] font-light leading-[1.7]" style={{ color: "hsl(var(--foreground) / 0.7)" }}>
                 GSoC taught me the difference between writing code and understanding systems.
-                It was the first time I worked on something where the users were other developers —
+                It was the first time I worked on something where the users were other developers 
                 and the quality of my thinking mattered more than the volume of my output.
               </p>
             </div>
@@ -112,7 +115,7 @@ const nowCards = [
   {
     label: "Currently thinking about",
     title: "What does \"senior\" mean when AI can write the code?",
-    body: "The engineers who matter next decade won't be judged by velocity. They'll be judged by judgment — knowing what to build, what to skip, and what to question.",
+    body: "The engineers who matter next decade won't be judged by velocity. They'll be judged by judgment  knowing what to build, what to skip, and what to question.",
   },
   {
     label: "Currently reading",
@@ -121,13 +124,13 @@ const nowCards = [
   },
   {
     label: "Currently building",
-    title: "This site — and the essays to fill it",
-    body: "The site is the smallest part. The harder work is writing clearly about what I've learned — in public, with my name on it.",
+    title: "This site  and the essays to fill it",
+    body: "The site is the smallest part. The harder work is writing clearly about what I've learned  in public, with my name on it.",
   },
   {
     label: "Talks",
     title: "Open to speaking",
-    body: "I've spoken at CHAOSS and GirlScript. Open to meetups, podcasts, and conferences — around product engineering, LLMs in production, and what open source teaches you about craft.",
+    body: "I've spoken at CHAOSS and GirlScript. Open to meetups, podcasts, and conferences  around product engineering, LLMs in production, and what open source teaches you about craft.",
     link: { label: "Invite me ↗", href: "mailto:shivikapriya730@gmail.com" },
   },
 ];
@@ -178,40 +181,30 @@ const BuildingSection = () => {
 };
 
 /* ═══ Writing ═══ */
-const writings = [
-  { cat: "Engineering · LLMs", title: "Why I made the AI audit itself", blurb: "LLM output quality is not a model problem. It's a systems problem." },
-  { cat: "Product Engineering", title: "The IDE is not infrastructure. It's a product.", blurb: "When you move the tool engineers use during job interviews, every crash is a failed hire." },
-  { cat: "Open Source · Career", title: "I started coding as a hobby. GSoC taught me to think like an engineer.", blurb: "The shift from writing code to understanding systems." },
-  { cat: "The Future of Engineering", title: "AI can write the code. The question is who decides what to write.", blurb: "Why problem clarity is the skill that compounds." },
-];
-
 const WritingSection = () => {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-60px" });
+  const posts = getAllPosts().slice(0, 4);
+
   return (
     <section id="writing" className="pb-[120px]">
       <div className="w-full max-w-[1100px] mx-auto px-12 max-md:px-6">
         <SectionHead title="Writing" subtitle="Ideas I've been turning over" />
         <div ref={ref} className="flex flex-col">
-          {writings.map((w, i) => (
-            <motion.a
-              key={w.title}
-              href="#"
-              initial={{ opacity: 0 }}
-              animate={inView ? { opacity: 1 } : {}}
-              transition={{ duration: 0.5, delay: i * 0.08 }}
-              className="py-6 border-b border-border first:border-t grid grid-cols-[1fr_auto] gap-7 items-center no-underline group cursor-none"
-            >
+          {posts.map((post, i) => (
+            <Link
+              to={`/blog/${post.slug}`}
+              className="py-6 border-b border-border first:border-t grid grid-cols-[1fr_auto] gap-7 items-center no-underline group cursor-pointer block">
               <div>
-                <div className="text-[10px] uppercase tracking-[0.1em] text-muted-foreground mb-1.5">{w.cat}</div>
+                <div className="text-[10px] uppercase tracking-[0.1em] text-muted-foreground mb-1.5">{post.category}</div>
                 <div
-                  className="group-hover:opacity-60 transition-opacity"
+                  className="group-hover:opacity-60 transition-opacity text-foreground"
                   style={{ fontFamily: "var(--font-display)", fontSize: "clamp(17px, 2vw, 23px)", fontWeight: 500, lineHeight: 1.25 }}
                 >
-                  {w.title}
+                  {post.title}
                 </div>
                 <div className="text-[14px] font-light text-muted-foreground leading-[1.7] mt-1.5 max-w-[520px]">
-                  {w.blurb}
+                  {post.excerpt}
                 </div>
               </div>
               <svg
@@ -221,21 +214,21 @@ const WritingSection = () => {
               >
                 <path d="M7 17L17 7M17 7H7M17 7v10" />
               </svg>
-            </motion.a>
+            </Link>
           ))}
-        </div>
-        <div className="text-center mt-7">
-          <a
-            href="https://hashnode.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-[13px] text-muted-foreground no-underline border-b border-border pb-[2px] hover:text-foreground hover:border-foreground transition-colors cursor-none"
-          >
-            All writing on Hashnode ↗
-          </a>
-        </div>
       </div>
-    </section>
+      <div className="text-center mt-7">
+        <a
+          href="https://hashnode.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-[13px] text-muted-foreground no-underline border-b border-border pb-[2px] hover:text-foreground hover:border-foreground transition-colors cursor-none"
+        >
+          All writing on Hashnode ↗
+        </a>
+      </div>
+    </div >
+    </section >
   );
 };
 

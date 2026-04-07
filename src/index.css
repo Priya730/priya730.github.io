@@ -201,3 +201,101 @@ box-shadow: 0 0 12px rgba(0, 0, 0, 0.25);
   transform: scaleX(1);
   transform-origin: bottom left;
 }
+
+.prose-custom h1 {
+  font-family: var(--font-display);
+  font-size: clamp(28px, 4vw, 40px);
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 1.15;
+  margin-bottom: 1.5rem;
+  margin-top: 2.5rem;
+}
+.prose-custom h1:first-child { display: none; }
+.prose-custom h2 {
+  font-family: var(--font-display);
+  font-size: clamp(22px, 3vw, 30px);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+}
+.prose-custom h3 {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 600;
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+}
+.prose-custom p {
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1.85;
+  margin-bottom: 1.25rem;
+  color: hsl(var(--foreground) / 0.85);
+}
+.prose-custom strong {
+  font-weight: 500;
+  color: hsl(var(--foreground));
+}
+.prose-custom em {
+  font-style: italic;
+  color: hsl(var(--foreground) / 0.9);
+}
+.prose-custom ul, .prose-custom ol {
+  padding-left: 1.5rem;
+  margin-bottom: 1.25rem;
+}
+.prose-custom li {
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1.85;
+  color: hsl(var(--foreground) / 0.85);
+  margin-bottom: 0.5rem;
+}
+.prose-custom ol { list-style: decimal; }
+.prose-custom ul { list-style: disc; }
+.prose-custom blockquote {
+  border-left: 2px solid hsl(var(--border));
+  padding-left: 1.25rem;
+  margin: 1.5rem 0;
+  font-style: italic;
+  color: hsl(var(--muted-foreground));
+}
+.prose-custom code {
+  font-size: 14px;
+  padding: 2px 6px;
+  border-radius: 4px;
+  background: hsl(var(--card));
+  border: 1px solid hsl(var(--border));
+}
+.prose-custom pre {
+  background: hsl(var(--card));
+  border: 1px solid hsl(var(--border));
+  border-radius: 10px;
+  padding: 1.25rem;
+  overflow-x: auto;
+  margin: 1.5rem 0;
+}
+.prose-custom pre code {
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: 14px;
+  line-height: 1.7;
+}
+.prose-custom a {
+  color: hsl(var(--foreground));
+  text-decoration: none;
+  border-bottom: 1px solid hsl(var(--border));
+  transition: border-color 0.2s;
+}
+.prose-custom a:hover {
+  border-color: hsl(var(--foreground));
+}
+.prose-custom hr {
+  border: none;
+  border-top: 1px solid hsl(var(--border));
+  margin: 2rem 0;
+}

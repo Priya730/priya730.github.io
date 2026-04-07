@@ -27,11 +27,17 @@ const CustomCursor = () => {
 
     const handleOver = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
-      const linkEl = target.closest("a[href^='http'], a[target='_blank'], [data-cursor-label]");
+      const linkEl = target.closest(  "a[href], [data-cursor-label]");
+      const href = linkEl.getAttribute("href") || "";
+
       if (linkEl) {
 const label =
   linkEl.getAttribute("data-cursor-label") ||
-  (target.closest("[data-expand]") ? "See how it works" : "Open ↗");        setCursorLabel(label);
+  (href.includes("/blog/")
+    ? "Read Post↗"
+    : target.closest("[data-expand]")
+    ? "See how it works"
+    : "Open ↗"); setCursorLabel(label);
         setIsHovering(true);
         return;
       }
@@ -80,9 +86,9 @@ const label =
             fontWeight: 500,
             padding: "4px 10px",
             borderRadius: "6px",
-    background: "hsl(var(--foreground))", // solid color
-    opacity: 1, // 👈 force full opacity
-    mixBlendMode: "normal", // 👈 important
+            background: "hsl(var(--foreground))", // solid color
+            opacity: 1, // 👈 force full opacity
+            mixBlendMode: "normal", // 👈 important
             color: "hsl(var(--background))",
             pointerEvents: "none",
           }}
