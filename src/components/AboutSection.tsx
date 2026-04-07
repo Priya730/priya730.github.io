@@ -38,17 +38,17 @@ const AboutSection = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="border-b border-border hover:border-foreground transition-colors no-underline font-bold"
-                style={{color: "rgb(22 163 74"}}
+                style={{ color: "rgb(22 163 74" }}
               >
                 HackerRank ↗
               </a>{" "}
               , each starting from a problem and ending with a shipped outcome.
             </p>
-                        <p className="text-[16px] font-light leading-[1.85] mb-[18px]">
-  I started coding as a hobby. Over time, it led me through open source, GSoC in 2022,
-  and now to building production systems at HackerRank since 2023 that are used by thousands of companies. Somewhere along the way, my mindset shifted. I stopped asking "how do I build this?" and began asking{" "}
-  <em className="not-italic font-medium">"why should this exist at all?"</em>
-</p>
+            <p className="text-[16px] font-light leading-[1.85] mb-[18px]">
+              I started coding as a hobby. Over time, it led me through open source, GSoC in 2022,
+              and now to building production systems at HackerRank since 2023 that are used by thousands of companies. Somewhere along the way, my mindset shifted. I stopped asking "how do I build this?" and began asking{" "}
+              <em className="not-italic font-medium">"why should this exist at all?"</em>
+            </p>
             <p className="text-[16px] font-light leading-[1.85]">
               In the new era of software, I think the engineers who matter aren't the
               ones who code fastest. They're the ones who know{" "}

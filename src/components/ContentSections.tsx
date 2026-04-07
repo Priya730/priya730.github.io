@@ -68,7 +68,7 @@ const GSoCSection = () => {
             >
               From first PR to shipping production metrics
             </h3>
-            <p className="text-[14.5px] font-light text-muted-foreground leading-[1.8] mb-4">
+            <p className="text-[15.5px] font-light text-muted-foreground leading-[1.8] mb-4">
               Selected for GSoC 2022 with CHAOSS — an open-source project under the Linux Foundation
               focused on community health analytics. Contributed to Augur, building metrics pipelines
               that help maintainers understand the sustainability and health of their communities.
@@ -158,7 +158,7 @@ const BuildingSection = () => {
               >
                 {c.title}
               </div>
-              <p className="text-[13.5px] font-light text-muted-foreground leading-[1.75]">
+              <p className="text-[14.5px] font-light text-muted-foreground leading-[1.75]">
                 {c.body}
               </p>
               {c.link && (
@@ -210,7 +210,7 @@ const WritingSection = () => {
                 >
                   {w.title}
                 </div>
-                <div className="text-[13px] font-light text-muted-foreground leading-[1.7] mt-1.5 max-w-[520px]">
+                <div className="text-[14px] font-light text-muted-foreground leading-[1.7] mt-1.5 max-w-[520px]">
                   {w.blurb}
                 </div>
               </div>
@@ -293,7 +293,7 @@ const FooterSection = () => (
         >
           Let's close<br />a gap together.
         </h2>
-        <p className="text-[14px] font-light text-muted-foreground max-w-[360px] leading-[1.8]">
+        <p className="text-[15px] font-light text-muted-foreground max-w-[360px] leading-[1.8]">
           Open to interesting problems, collaborations, and honest conversations. Especially about AI, product engineering, and systems that have to scale.
         </p>
         <a

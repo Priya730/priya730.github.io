@@ -170,7 +170,7 @@ const CaseCard = ({ item, index }: { item: typeof workItems[0]; index: number })
         <div className="relative">
           <div className="flex items-center gap-2 mb-2.5">
             <span className="w-[18px] h-px" style={{ background: "hsl(var(--text-dim))" }} />
-            <span className="text-[10px] uppercase tracking-[0.12em] text-muted-foreground">
+            <span className="text-[11px] uppercase tracking-[0.12em] text-muted-foreground">
               {item.meta}
             </span>
           </div>

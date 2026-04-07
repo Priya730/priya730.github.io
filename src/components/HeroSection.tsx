@@ -70,7 +70,7 @@ const HeroSection = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.05, duration: 0.6 }}
-              className="flex items-center gap-2.5 mb-7 text-[11px] uppercase tracking-[0.13em] text-muted-foreground"
+              className="flex items-center gap-2.5 mb-7 text-[12px] uppercase tracking-[0.13em] text-muted-foreground"
             >
               <span className="w-6 h-px bg-muted" />
               SDE II · HackerRank · GSoC '22
@@ -138,14 +138,14 @@ const HeroSection = () => {
                 className="block mb-1.5"
                 style={{
                   fontFamily: "var(--font-display)",
-                  fontSize: "clamp(17px, 2vw, 22px)",
+                  fontSize: "clamp(19px, 2.2vw, 24px)",
                   fontWeight: 600,
                   fontStyle: "italic",
                 }}
               >
                 I figure out which problem is worth solving
               </span>
-              <span className="block text-[16px] font-light text-muted-foreground leading-[1.65] max-w-[440px]">
+              <span className="block text-[16px] font-light text-muted-foreground leading-[1.7] max-w-[460px]">
                 then close the gap to working software.
               </span>
             </motion.div>
@@ -159,13 +159,12 @@ const HeroSection = () => {
             >
               <a
                 href="#work"
-                className="inline-flex items-center gap-1.5 px-[22px] py-[10px] rounded-full text-[13px] bg-foreground text-background border border-foreground hover:opacity-90 transition-all cursor-none"
-              >
+className="inline-flex items-center gap-1.5 px-[22px] py-[10px] rounded-full text-[14px] bg-foreground text-background border border-foreground hover:opacity-90 transition-all cursor-none"              >
                 See the work
               </a>
               <a
                 href="mailto:shivikapriya730@gmail.com"
-                className="inline-flex items-center gap-1.5 px-[22px] py-[10px] rounded-full text-[13px] border border-border text-muted-foreground hover:border-[hsl(var(--border-hover))] hover:text-foreground transition-all cursor-none"
+                className="inline-flex items-center gap-1.5 px-[22px] py-[10px] rounded-full text-[14px] border border-border text-muted-foreground hover:border-[hsl(var(--border-hover))] hover:text-foreground transition-all cursor-none"
               >
                 Get in touch
               </a>
@@ -209,10 +208,10 @@ const HeroSection = () => {
             <div key={set} className="flex items-center whitespace-nowrap">
               {tickerItems.map((item, i) => (
                 <span key={`${set}-${i}`} className="flex items-center">
-                  <span className="text-[10px] uppercase tracking-[0.11em] px-4" style={{ color: "hsl(var(--text-dim))" }}>
+                  <span className="text-[13px] uppercase tracking-[0.11em] px-4" style={{ color: "hsl(var(--text-dim))" }}>
                     {item}
                   </span>
-                  <span className="text-[8px] opacity-40" style={{ color: "hsl(var(--text-dim))" }}>·</span>
+                  <span className="text-[9px] opacity-40" style={{ color: "hsl(var(--text-dim))" }}>·</span>
                 </span>
               ))}
             </div>
