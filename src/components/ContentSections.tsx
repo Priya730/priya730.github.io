@@ -219,7 +219,7 @@ const WritingSection = () => {
       </div>
       <div className="text-center mt-7">
         <a
-          href="https://hashnode.com"
+          href="https://priyasrivastava.hashnode.dev"
           target="_blank"
           rel="noopener noreferrer"
           className="text-[13px] text-muted-foreground no-underline border-b border-border pb-[2px] hover:text-foreground hover:border-foreground transition-colors cursor-none"
@@ -299,10 +299,10 @@ const FooterSection = () => (
       <div className="flex flex-col items-end max-md:items-start gap-7">
         <div className="flex flex-col items-end max-md:items-start gap-2.5">
           {[
-            { label: "GitHub", href: "https://github.com" },
-            { label: "LinkedIn", href: "https://linkedin.com" },
-            { label: "Twitter / X", href: "https://twitter.com" },
-            { label: "Hashnode", href: "https://hashnode.com" },
+            { label: "GitHub", href: "https://github.com/Priya730" },
+            { label: "LinkedIn", href: "https://linkedin.com/in/priyasrivastava730" },
+            { label: "Twitter / X", href: "https://twitter.com/shivikapriya" },
+            { label: "Hashnode", href: "https://priyasrivastava.hashnode.dev" },
           ].map((s) => (
             <a
               key={s.label}
@@ -315,7 +315,7 @@ const FooterSection = () => (
             </a>
           ))}
         </div>
-        <span className="text-[12px]" style={{ color: "hsl(var(--text-dim))" }}>© 2025 Priya Srivastava</span>
+        <span className="text-[12px]" style={{ color: "hsl(var(--text-dim))" }}>© {new Date().getFullYear()} Priya Srivastava</span>
       </div>
     </div>
   </footer>
