@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { motion, useInView } from "framer-motion";
 import { getAllPosts } from "@/lib/blog";
@@ -233,35 +233,159 @@ const WritingSection = () => {
 };
 
 /* ═══ Talks ═══ */
-const talks = [
-  { title: "Building AI-Powered Assessment Tools at Scale", event: "Engineering Deep Dive · HackerRank Internal", yr: "2023" },
-  { title: "Open Source Health Metrics with Augur", event: "CHAOSS Community Call · GSoC Demo Day", yr: "2022" },
-  { title: "Contributing to Open Source: From Zero to GSoC", event: "GirlScript Summer of Code · Community Session", yr: "2021" },
+type TalkItem = {
+  title: string;
+  event: string;
+  yr: string;
+  link?: string;
+  embedSrc?: string;
+  tweet?: boolean;
+};
+
+const talks: TalkItem[] = [
+  {
+    title: "Open Source at Google Developers GDSC Wow Ahmedabad",
+    event: "Talk on open source and communities",
+    yr: "Talk",
+    tweet: true,
+  },
+  {
+    title: "SheBuildsEco · Hacktoberfest talk",
+    event: "YouTube link",
+    yr: "Talk",
+    embedSrc: "https://www.youtube.com/embed/Nw8n_BHiuCw?si=V4euWLH5x17qXLpy",
+  },
+  {
+    title: "Content Creation with AI and LLMs as Judge",
+    event: "HackerRank internal talk",
+    yr: "Talk",
+    link: "/blog/why-i-made-the-ai-audit-itself",
+  },
 ];
+
+const TwitterEmbed = () => {
+  const ref = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    const loadWidgets = () => {
+      const twttr = (window as Window & {
+        twttr?: { widgets?: { load?: (node?: HTMLElement | null) => void } };
+      }).twttr;
+
+      twttr?.widgets?.load?.(ref.current);
+    };
+
+    const existingScript = document.getElementById("twitter-widgets-js") as HTMLScriptElement | null;
+    if (existingScript) {
+      if ((window as Window & { twttr?: unknown }).twttr) {
+        loadWidgets();
+        return;
+      }
+
+      existingScript.addEventListener("load", loadWidgets, { once: true });
+      return;
+    }
+
+    const script = document.createElement("script");
+    script.id = "twitter-widgets-js";
+    script.async = true;
+    script.src = "https://platform.twitter.com/widgets.js";
+    script.charset = "utf-8";
+    script.onload = loadWidgets;
+    document.body.appendChild(script);
+
+    return () => {
+      script.onload = null;
+    };
+  }, []);
+
+  return (
+    <div ref={ref} className="col-span-2 mt-5">
+      <blockquote className="twitter-tweet">
+        <p lang="en" dir="ltr">
+          Thank you for having me{" "}
+          <a href="https://twitter.com/GDSCWOW_Gujarat?ref_src=twsrc%5Etfw">@GDSCWOW_Gujarat</a> 😄 It was an amazing
+          event ✨ <a href="https://t.co/ZRlUdR4snZ">https://t.co/ZRlUdR4snZ</a>
+        </p>
+        &mdash; Priya Srivastava 👩‍💻✨ (@shivikapriya){" "}
+        <a href="https://twitter.com/shivikapriya/status/1647592728010825728?ref_src=twsrc%5Etfw">April 16, 2023</a>
+      </blockquote>
+    </div>
+  );
+};
 
 const TalksSection = () => {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-60px" });
+  const MotionLink = motion(Link);
   return (
     <section id="talks" className="pb-[120px]">
       <div className="w-full max-w-[1100px] mx-auto px-12 max-md:px-6">
         <SectionHead title="Talks" subtitle="Sharing what I've learned" />
         <div ref={ref} className="border border-border rounded-xl overflow-hidden">
           {talks.map((t, i) => (
-            <motion.div
-              key={t.title}
-              initial={{ opacity: 0 }}
-              animate={inView ? { opacity: 1 } : {}}
-              transition={{ duration: 0.5, delay: i * 0.08 }}
-              className="px-8 py-[26px] grid grid-cols-[1fr_auto] items-center gap-6 border-b border-border last:border-b-0 hover:bg-[hsl(var(--card-hover))] transition-colors"
-              style={{ background: "hsl(var(--card))" }}
-            >
-              <div>
-                <div style={{ fontFamily: "var(--font-display)", fontSize: "17px", fontWeight: 500 }} className="mb-[3px]">{t.title}</div>
-                <div className="text-[12.5px] text-muted-foreground">{t.event}</div>
-              </div>
-              <span className="text-[12.5px] whitespace-nowrap" style={{ color: "hsl(var(--text-dim))" }}>{t.yr}</span>
-            </motion.div>
+            t.link && !t.link.startsWith("http") ? (
+              <MotionLink
+                key={t.title}
+                to={t.link}
+                initial={{ opacity: 0 }}
+                animate={inView ? { opacity: 1 } : {}}
+                transition={{ duration: 0.5, delay: i * 0.08 }}
+                className="px-8 py-[26px] grid grid-cols-[1fr_auto] items-center gap-6 border-b border-border last:border-b-0 hover:bg-[hsl(var(--card-hover))] transition-colors no-underline cursor-pointer"
+                style={{ background: "hsl(var(--card))" }}
+              >
+                <div>
+                  <div style={{ fontFamily: "var(--font-display)", fontSize: "17px", fontWeight: 500 }} className="mb-[3px]">
+                    {t.title}
+                  </div>
+                  <div className="text-[12.5px] text-muted-foreground">{t.event}</div>
+                </div>
+                <span className="text-[12.5px] whitespace-nowrap" style={{ color: "hsl(var(--text-dim))" }}>{t.yr}</span>
+              </MotionLink>
+            ) : (
+              <motion.div
+                key={t.title}
+                initial={{ opacity: 0 }}
+                animate={inView ? { opacity: 1 } : {}}
+                transition={{ duration: 0.5, delay: i * 0.08 }}
+                className="px-8 py-[26px] grid grid-cols-[1fr_auto] items-center gap-6 border-b border-border last:border-b-0 hover:bg-[hsl(var(--card-hover))] transition-colors"
+                style={{ background: "hsl(var(--card))" }}
+              >
+                <div>
+                  <div style={{ fontFamily: "var(--font-display)", fontSize: "17px", fontWeight: 500 }} className="mb-[3px]">
+                    {t.link ? (
+                      <a
+                        href={t.link}
+                        {...(t.link.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                        className="no-underline hover:opacity-70 transition-opacity"
+                      >
+                        {t.title}
+                      </a>
+                    ) : (
+                      t.title
+                    )}
+                  </div>
+                  <div className="text-[12.5px] text-muted-foreground">{t.event}</div>
+                </div>
+                <span className="text-[12.5px] whitespace-nowrap" style={{ color: "hsl(var(--text-dim))" }}>{t.yr}</span>
+                {t.embedSrc && (
+                  <div className="col-span-2 mt-5">
+                    <div className="relative w-full overflow-hidden rounded-[12px] border border-border bg-black aspect-video">
+                      <iframe
+                        className="absolute inset-0 h-full w-full"
+                        src={t.embedSrc}
+                        title={t.title}
+                        frameBorder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerPolicy="strict-origin-when-cross-origin"
+                        allowFullScreen
+                      />
+                    </div>
+                  </div>
+                )}
+                {t.tweet && <TwitterEmbed />}
+              </motion.div>
+            )
           ))}
         </div>
       </div>
